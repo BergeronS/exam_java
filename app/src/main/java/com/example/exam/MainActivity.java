@@ -1,5 +1,6 @@
 package com.example.exam;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout surfaceDessin;
     SurfaceDessin surf;
     private String formeChoisie = "Rectangle";
-
+    int couleurCourante = Color.RED;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +74,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        LinearLayout LLcouleurs = findViewById(R.id.couleurs);
+        EcouteurCouleur ecCouleur = new EcouteurCouleur();
+        for (int i = 0; i < LLcouleurs.getChildCount(); i++) {
+            View temp = LLcouleurs.getChildAt(i);
+            temp.setOnTouchListener(ecCouleur);
+        }
     }
 
     private class Ecouteur implements View.OnTouchListener {
@@ -94,7 +102,9 @@ public class MainActivity extends AppCompatActivity {
                     Forme preview = null;
 
                     if (formeChoisie.equals("Rectangle")) {
-                        preview = new RectangleForme(startX, startY, x, y, 0xFF0000FF);
+                        preview = new RectangleForme(startX, startY, x, y, couleurCourante);
+                    } else if (formeChoisie.equals("Cercle")) {
+                        preview = new CercleForme(startX, startY, x, y, couleurCourante);
                     }
 
                     surf.setFormeTemporaire(preview);
@@ -104,7 +114,9 @@ public class MainActivity extends AppCompatActivity {
                     Forme finalForme = null;
 
                     if (formeChoisie.equals("Rectangle")) {
-                        finalForme = new RectangleForme(startX, startY, x, y, 0xFF0000FF);
+                        finalForme = new RectangleForme(startX, startY, x, y, couleurCourante);
+                    } else if (formeChoisie.equals("Cercle")) {
+                        finalForme = new CercleForme(startX, startY, x, y, couleurCourante);
                     }
 
                     if (finalForme != null) {
@@ -117,6 +129,16 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         }
+    }
 
+    private class EcouteurCouleur implements View.OnTouchListener {
+        @Override
+        public boolean onTouch(View view, MotionEvent event) {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                String tag = (String) view.getTag();
+                couleurCourante = Color.parseColor(tag);
+            }
+            return true;
+        }
     }
 }

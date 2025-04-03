@@ -1,6 +1,7 @@
 package com.example.exam;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.view.View;
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class SurfaceDessin extends View {
     @Override
     protected void onDraw(@NonNull Canvas canvas) {
         super.onDraw(canvas);
+        setBackgroundColor(Color.WHITE);
         for (Forme f : formes) {
             f.dessiner(canvas);
         }

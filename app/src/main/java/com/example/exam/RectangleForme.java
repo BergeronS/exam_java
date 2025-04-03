@@ -17,6 +17,7 @@ public class RectangleForme extends Forme {
         paint = new Paint();
         paint.setColor(couleur);
         paint.setStyle(Paint.Style.STROKE);
+//        paint.setStyle(Paint.Style.FILL);
         paint.setStrokeWidth(5);
     }
 

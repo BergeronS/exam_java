@@ -16,6 +16,93 @@
     <LinearLayout
         android:id="@+id/surface_dessin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"></LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/couleurs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <View
+            android:id="@+id/rouge"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FF0000"
+            android:tag="#FF0000" />
+
+        <View
+            android:id="@+id/vert"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00FF00"
+            android:tag="#00FF00" />
+
+        <View
+            android:id="@+id/bleu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#0000FF"
+            android:tag="#0000FF" />
+
+        <View
+            android:id="@+id/mauve"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FF00FF"
+            android:tag="#FF00FF" />
+
+        <View
+            android:id="@+id/jaune"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FFFF00"
+            android:tag="#FFFF00" />
+
+        <View
+            android:id="@+id/turquoise"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#00FFFF"
+            android:tag="#00FFFF" />
+
+        <View
+            android:id="@+id/vert_pale"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#7fff00"
+            android:tag="#7FFF00" />
+
+        <View
+            android:id="@+id/orange"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#ff5500"
+            android:tag="#FF5500" />
+
+        <View
+            android:id="@+id/noir"
+            android:layout_width="0dp"
+            android:layout_height="41dp"
+            android:layout_weight="1"
+            android:background="#000000"
+            android:tag="#000000" />
+        <View
+            android:id="@+id/blanc"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#fffffe"
+            android:tag="#ffffff" />
+    </LinearLayout>
 </LinearLayout>
