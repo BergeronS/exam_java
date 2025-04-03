@@ -85,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
 
     private class Ecouteur implements View.OnTouchListener {
         float startX, startY;
+        float tX1, tY1, tX2, tY2;
+        int triangleState = 0; // 0: rien, 1: 1 point, 2: 2 points
+
 
         @Override
         public boolean onTouch(View source, MotionEvent event) {
@@ -94,8 +97,28 @@ public class MainActivity extends AppCompatActivity {
 
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    startX = x;
-                    startY = y;
+                    if (formeChoisie.equals("Triangle")) {
+                        if (triangleState == 0) {
+                            tX1 = x;
+                            tY1 = y;
+                            triangleState = 1;
+                        } else if (triangleState == 1) {
+                            tX2 = x;
+                            tY2 = y;
+                            triangleState = 2;
+                        } else if (triangleState == 2) {
+                            float tX3 = x;
+                            float tY3 = y;
+                            Forme triangle = new TriangleForme(tX1, tY1, tX2, tY2, tX3, tY3, couleurCourante);
+                            surf.ajouterForme(triangle);
+                            triangleState = 0;
+                            surf.setFormeTemporaire(null); // Clear preview
+                        }
+                    } else {
+                        // Rectangle ou Cercle
+                        startX = x;
+                        startY = y;
+                    }
                     break;
 
                 case MotionEvent.ACTION_MOVE:
